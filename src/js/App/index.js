@@ -8,6 +8,7 @@ import Categories from '../Categories';
 import Channel from '../Channel';
 import SignIn from '../SignIn';
 import NavBar from '../NavBar';
+import MapView from '../MapView';
 
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from "react-router-dom";
 import firebase from '../Firebase';
@@ -169,6 +170,15 @@ class App extends React.Component {
                 data = {this.data}
             />
         )
+      } else if (name === "MapView") {
+        const pathInputId = pathInput.location.search.split('=')[1];
+        return (
+            <MapView
+                firebase = {firebase}
+                data = {this.data}
+                viewId = {pathInputId}
+            />
+        )
       } 
     }
 
@@ -190,6 +200,7 @@ class App extends React.Component {
                 <Route exact path="/categories" component={() => this.renderView("Categories")} />
                 <Route exact path="/channel" component={(id) => this.renderView("Channel", id)} />
                 <Route exact path="/signin" component={() => this.renderView("SignIn")} />
+                <Route exact path="/mapview" component={(id) => this.renderView("MapView", id)} />
               </Switch>
             </Router>
           </div>
