@@ -4,6 +4,8 @@ import Dashboard from '../Dashboard';
 import Checkout from '../Checkout';
 
 import Loading from '../Loading';
+import Categories from '../Categories';
+import Channel from '../Channel';
 import NavBar from '../NavBar';
 
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from "react-router-dom";
@@ -127,21 +129,37 @@ class App extends React.Component {
             return (
                 <Landing
                     firebase = {firebase}
-                ></Landing>
+                />
             )
       } else if (name === "Dashboard") {
         return (
             <Dashboard
                 firebase = {firebase}
                 data = {this.data}
-            ></Dashboard>
+            />
         )
       } else if (name === "Checkout") {
         return (
             <Checkout
                 firebase = {firebase}
                 data = {this.data}
-            ></Checkout>
+            />
+        )
+      } else if (name === "Categories") {
+        return (
+            <Categories
+                firebase = {firebase}
+                data = {this.data}
+            />
+        )
+      } else if (name === "Channel") {
+        const pathInputId = pathInput.location.search.split('=')[1];
+        return (
+            <Channel
+                firebase = {firebase}
+                data = {this.data}
+                viewId = {pathInputId}
+            />
         )
       }
     }
@@ -161,6 +179,8 @@ class App extends React.Component {
                 <Route exact path="/" component={() => this.renderView("Landing")} />
                 <Route exact path="/checkout" component={() => this.renderView("Checkout")} />
                 <Route exact path="/dashboard" component={() => this.renderView("Dashboard")} />
+                <Route exact path="/categories" component={() => this.renderView("Categories")} />
+                <Route exact path="/channel" component={(id) => this.renderView("Channel", id)} />
               </Switch>
             </Router>
           </div>

@@ -5,7 +5,7 @@ import NavBar from '../NavBar';
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from "react-router-dom";
 
 
-class Landing extends React.Component {
+class Channel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,8 +30,9 @@ class Landing extends React.Component {
         } else {
             return (
                 <div>
-                    <NavBar current={'Landing'}/>
-                    <Typography variant="h1">LANDING</Typography>
+                    <NavBar current={'Channel'}/>
+                    <Typography variant="h1">CHANNEL</Typography>
+                    <Typography variant="h1">{"ID: " + this.props.viewId}</Typography>
                     
                 </div>
             )
@@ -39,4 +40,4 @@ class Landing extends React.Component {
     }
 }
 
-export default Landing;
+export default Channel;

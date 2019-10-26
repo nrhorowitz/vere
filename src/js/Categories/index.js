@@ -5,7 +5,7 @@ import NavBar from '../NavBar';
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from "react-router-dom";
 
 
-class Landing extends React.Component {
+class Categories extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,8 +30,8 @@ class Landing extends React.Component {
         } else {
             return (
                 <div>
-                    <NavBar current={'Landing'}/>
-                    <Typography variant="h1">LANDING</Typography>
+                    <NavBar current={'Categories'}/>
+                    <Typography variant="h1">CATEGORIES</Typography>
                     
                 </div>
             )
@@ -39,4 +39,4 @@ class Landing extends React.Component {
     }
 }
 
-export default Landing;
+export default Categories;

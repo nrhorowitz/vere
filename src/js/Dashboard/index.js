@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
                 <div>
                     <NavBar current={'Dashboard'}/>
                     <Typography variant="h1">DASHBOARD</Typography>
-                    <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Dashboard")}>BROWSE</Button>
+                    
                 </div>
             )
         }

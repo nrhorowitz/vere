@@ -27,6 +27,14 @@ class NavBar extends React.Component {
             if (this.props.current !== "Checkout") {
                 this.setState({redirect: '/checkout'});
             }
+        } else if (type === "Categories") {
+            if (this.props.current !== "Categories") {
+                this.setState({redirect: '/categories'});
+            }
+        } else if (type === "Channel") {
+            if (this.props.current !== "Channel") {
+                this.setState({redirect: '/channel?id=TODO_PREVIOUS_VIEWED'});
+            }
         }
     }
 
@@ -38,11 +46,20 @@ class NavBar extends React.Component {
         } else {
             return (
                 <Grid container>
-                    <Grid container xs='6'>
+                    <Grid container xs='2'>
                         <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Landing")}>LANDING</Button>
                     </Grid>
-                    <Grid container xs='6'>
+                    <Grid container xs='2'>
                         <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Dashboard")}>DASHBOARD</Button>
+                    </Grid>
+                    <Grid container xs='2'>
+                        <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Checkout")}>CHECKOUT</Button>
+                    </Grid>
+                    <Grid container xs='2'>
+                        <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Categories")}>CATEGORIES</Button>
+                    </Grid>
+                    <Grid container xs='2'>
+                        <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Channel")}>CHANNEL</Button>
                     </Grid>
                 </Grid>
             )

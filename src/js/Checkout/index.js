@@ -32,7 +32,7 @@ class Checkout extends React.Component {
                 <div>
                     <NavBar current={'Checkout'}/>
                     <Typography variant="h1">CHECKOUT</Typography>
-                    <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Dashboard")}>BROWSE</Button>
+                    
                 </div>
             )
         }
