@@ -5,7 +5,7 @@ import NavBar from '../NavBar';
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from "react-router-dom";
 
 
-class Checkout extends React.Component {
+class SignIn extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,10 +28,11 @@ class Checkout extends React.Component {
                 <Redirect push to={this.state.redirect}></Redirect>
             )
         } else {
+            //<SignIn></SignIn>
             return (
                 <div>
-                    <NavBar current={'Checkout'} firebase={this.props.firebase}/>
-                    <Typography variant="h1">CHECKOUT</Typography>
+                    <NavBar current={'SignIn'} firebase={this.props.firebase}/>
+                    <Typography variant="h1">SIGNIN</Typography>
                     
                 </div>
             )
@@ -39,4 +40,4 @@ class Checkout extends React.Component {
     }
 }
 
-export default Checkout;
+export default SignIn;

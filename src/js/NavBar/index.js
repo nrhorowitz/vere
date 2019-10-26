@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import FirebaseId from './FirebaseId.js';
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from "react-router-dom";
 
 
@@ -35,6 +36,10 @@ class NavBar extends React.Component {
             if (this.props.current !== "Channel") {
                 this.setState({redirect: '/channel?id=TODO_PREVIOUS_VIEWED'});
             }
+        } else if (type === "SignIn") {
+            if (this.props.current !== "SignIn") {
+                this.setState({redirect: '/signin'});
+            }
         }
     }
 
@@ -46,20 +51,27 @@ class NavBar extends React.Component {
         } else {
             return (
                 <Grid container>
-                    <Grid container xs='2'>
+                    <FirebaseId firebase={this.props.firebase}/>
+                    <Grid container xs='1'>
                         <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Landing")}>LANDING</Button>
                     </Grid>
-                    <Grid container xs='2'>
+                    <Grid container xs='1'>
                         <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Dashboard")}>DASHBOARD</Button>
                     </Grid>
-                    <Grid container xs='2'>
+                    <Grid container xs='1'>
                         <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Checkout")}>CHECKOUT</Button>
                     </Grid>
-                    <Grid container xs='2'>
+                    <Grid container xs='1'>
                         <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Categories")}>CATEGORIES</Button>
                     </Grid>
-                    <Grid container xs='2'>
+                    <Grid container xs='1'>
                         <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Channel")}>CHANNEL</Button>
+                    </Grid>
+                    <Grid container xs='1'>
+                        <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("SignIn")}>SIGN IN</Button>
+                    </Grid>
+                    <Grid container xs='1'>
+                        <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("Logout")}>LOGOUT</Button>
                     </Grid>
                 </Grid>
             )

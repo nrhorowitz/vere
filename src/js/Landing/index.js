@@ -30,7 +30,7 @@ class Landing extends React.Component {
         } else {
             return (
                 <div>
-                    <NavBar current={'Landing'}/>
+                    <NavBar current={'Landing'} firebase={this.props.firebase}/>
                     <Typography variant="h1">LANDING</Typography>
                     
                 </div>

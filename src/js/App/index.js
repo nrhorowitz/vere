@@ -6,6 +6,7 @@ import Checkout from '../Checkout';
 import Loading from '../Loading';
 import Categories from '../Categories';
 import Channel from '../Channel';
+import SignIn from '../SignIn';
 import NavBar from '../NavBar';
 
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from "react-router-dom";
@@ -161,7 +162,14 @@ class App extends React.Component {
                 viewId = {pathInputId}
             />
         )
-      }
+      } else if (name === "SignIn") {
+        return (
+            <SignIn
+                firebase = {firebase}
+                data = {this.data}
+            />
+        )
+      } 
     }
 
     render() {
@@ -181,6 +189,7 @@ class App extends React.Component {
                 <Route exact path="/dashboard" component={() => this.renderView("Dashboard")} />
                 <Route exact path="/categories" component={() => this.renderView("Categories")} />
                 <Route exact path="/channel" component={(id) => this.renderView("Channel", id)} />
+                <Route exact path="/signin" component={() => this.renderView("SignIn")} />
               </Switch>
             </Router>
           </div>

@@ -30,7 +30,7 @@ class Channel extends React.Component {
         } else {
             return (
                 <div>
-                    <NavBar current={'Channel'}/>
+                    <NavBar current={'Channel'} firebase={this.props.firebase}/>
                     <Typography variant="h1">CHANNEL</Typography>
                     <Typography variant="h1">{"ID: " + this.props.viewId}</Typography>
                     

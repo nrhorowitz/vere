@@ -30,7 +30,7 @@ class Categories extends React.Component {
         } else {
             return (
                 <div>
-                    <NavBar current={'Categories'}/>
+                    <NavBar current={'Categories'} firebase={this.props.firebase}/>
                     <Typography variant="h1">CATEGORIES</Typography>
                     
                 </div>

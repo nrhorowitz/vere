@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
         } else {
             return (
                 <div>
-                    <NavBar current={'Dashboard'}/>
+                    <NavBar current={'Dashboard'} firebase={this.props.firebase}/>
                     <Typography variant="h1">DASHBOARD</Typography>
                     
                 </div>
