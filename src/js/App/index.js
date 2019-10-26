@@ -29,6 +29,7 @@ class App extends React.Component {
         this.data = this.data.bind(this);
         this.updateData = this.updateData.bind(this);
         this.writeData = this.writeData.bind(this);
+        this.pullGraphData = this.pullGraphData.bind(this);
     }
 
     componentWillMount() {
@@ -126,6 +127,17 @@ class App extends React.Component {
       }
     }
 
+    pullGraphData() {
+      var graph = [
+        {'a1': ['a2', 'a4', 'a9']},
+        {'a2': ['a1', 'a4', 'a9']},
+        {'a3': ['a2']},
+        {'a4': ['a2', 'a4', 'a9', 'a1']},
+      ];
+      //TODO: pull acutal graph from firestore
+      return graph;
+    }
+
     renderView(name, pathInput=" ") {
         if (name === "Landing") {
             return (
@@ -177,6 +189,7 @@ class App extends React.Component {
                 firebase = {firebase}
                 data = {this.data}
                 viewId = {pathInputId}
+                pullGraphData = {this.pullGraphData}
             />
         )
       } 

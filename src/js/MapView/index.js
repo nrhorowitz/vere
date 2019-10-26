@@ -10,8 +10,31 @@ class MapView extends React.Component {
         super(props);
         this.state = {
             redirect: '',
+            fromId: '',
+            toId: '',
+            graphData: [],
+            paths: [],
         }
         this.resolveClick = this.resolveClick.bind(this);
+    }
+
+    componentWillMount() {
+        const idArray = this.props.viewId.split("<p>");
+        this.setState({fromId: idArray[0]});
+        if (idArray.length == 2) {
+            this.setState({toId: idArray[1]});
+        }
+        const graphData = this.props.pullGraphData();
+        this.setState({graphData: graphData});
+        const paths = this.generatePaths(graphData, idArray[0], idArray[1]);
+        this.setState({paths: paths});
+    }
+
+    generatePaths(graphData, fromId, toId) {
+        console.log(graphData);
+        console.log(fromId, toId);
+        //TODO: return list of paths
+        return [];
     }
 
     resolveClick(type) {
