@@ -176,10 +176,12 @@ class App extends React.Component {
             />
         )
       } else if (name === "SignIn") {
+        const pathInputId = pathInput.location.search.split('=')[1];
         return (
             <SignIn
                 firebase = {firebase}
                 data = {this.data}
+                viewId = {pathInputId}
             />
         )
       } else if (name === "MapView") {
@@ -196,8 +198,6 @@ class App extends React.Component {
     }
 
     render() {
-      console.log(firebase.auth().currentUser);
-      console.log(this.state.localData);
       if (this.state.loading) {
         return (
           <Loading></Loading>
@@ -212,7 +212,7 @@ class App extends React.Component {
                 <Route exact path="/dashboard" component={() => this.renderView("Dashboard")} />
                 <Route exact path="/categories" component={() => this.renderView("Categories")} />
                 <Route exact path="/channel" component={(id) => this.renderView("Channel", id)} />
-                <Route exact path="/signin" component={() => this.renderView("SignIn")} />
+                <Route exact path="/signin" component={(id) => this.renderView("SignIn", id)} />
                 <Route exact path="/mapview" component={(id) => this.renderView("MapView", id)} />
               </Switch>
             </Router>

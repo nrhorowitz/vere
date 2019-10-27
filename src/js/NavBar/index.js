@@ -38,12 +38,14 @@ class NavBar extends React.Component {
             }
         } else if (type === "SignIn") {
             if (this.props.current !== "SignIn") {
-                this.setState({redirect: '/signin'});
+                this.setState({redirect: '/signin?id=login'});
             }
         } else if (type === "MapView") {
             if (this.props.current !== "MapView") {
                 this.setState({redirect: '/mapview?id=TODO_DEFAULT_NODE_YOURSELF'});
             }
+        } else if (type === "Logout") {
+            this.props.firebase.auth().signOut();
         }
     }
 
