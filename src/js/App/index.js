@@ -9,6 +9,7 @@ import Channel from '../Channel';
 import SignIn from '../SignIn';
 import NavBar from '../NavBar';
 import MapView from '../MapView';
+import InputView from '../InputView';
 
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from "react-router-dom";
 import firebase from '../Firebase';
@@ -194,6 +195,16 @@ class App extends React.Component {
                 pullGraphData = {this.pullGraphData}
             />
         )
+      } else if (name === "InputView") {
+        const pathInputId = pathInput.location.search.split('=')[1];
+        return (
+            <InputView
+                firebase = {firebase}
+                data = {this.data}
+                viewId = {pathInputId}
+                pullGraphData = {this.pullGraphData}
+            />
+        )
       } 
     }
 
@@ -214,6 +225,7 @@ class App extends React.Component {
                 <Route exact path="/channel" component={(id) => this.renderView("Channel", id)} />
                 <Route exact path="/signin" component={(id) => this.renderView("SignIn", id)} />
                 <Route exact path="/mapview" component={(id) => this.renderView("MapView", id)} />
+                <Route exact path="/inputview" component={(id) => this.renderView("InputView", id)} />
               </Switch>
             </Router>
           </div>

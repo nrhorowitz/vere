@@ -12,6 +12,7 @@ class Categories extends React.Component {
         super(props);
         this.state = {
             redirect: '',
+            categoryData: [],
         }
         this.resolveClick = this.resolveClick.bind(this);
         this.loading = this.loading.bind(this);
@@ -26,12 +27,16 @@ class Categories extends React.Component {
     }
 
     loading() {
-        const dependencies = ['edm-concerts'];
+        const dependencies = ['edm-concerts', 'brand-clothing'];
+        var categoryData = [];
         for (var i in dependencies) {
             if (!this.props.data('categories', dependencies[i])) {
                 return true;
+            } else {
+                categoryData.push(this.props.data('categories', dependencies[i]));
             }
         }
+        this.setState({categoryData: categoryData});
         return false;
     }
 
@@ -49,7 +54,7 @@ class Categories extends React.Component {
                 <div>
                     <NavBar current={'Categories'} firebase={this.props.firebase}/>
                     <Album
-                        
+                        categoryData={this.state.categoryData}
                     />
                 </div>
             )

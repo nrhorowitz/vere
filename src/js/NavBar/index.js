@@ -44,6 +44,10 @@ class NavBar extends React.Component {
             if (this.props.current !== "MapView") {
                 this.setState({redirect: '/mapview?id=TODO_DEFAULT_NODE_YOURSELF'});
             }
+        } else if (type === "InputView") {
+            if (this.props.current !== "InputView") {
+                this.setState({redirect: '/inputview?id=TODO_DEFAULT_NODE_YOURSELF'});
+            }
         } else if (type === "Logout") {
             this.props.firebase.auth().signOut();
         }
@@ -81,6 +85,9 @@ class NavBar extends React.Component {
                     </Grid>
                     <Grid container xs='1'>
                         <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("MapView")}>MAPVIEW</Button>
+                    </Grid>
+                    <Grid container xs='1'>
+                        <Button variant="contained" color="secondary" onClick={()=>this.resolveClick("InputView")}>INPUTVIEW</Button>
                     </Grid>
                 </Grid>
             )
