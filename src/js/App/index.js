@@ -203,6 +203,7 @@ class App extends React.Component {
                 data = {this.data}
                 viewId = {pathInputId}
                 pullGraphData = {this.pullGraphData}
+                ReactDOM = {this.props.ReactDOM}
             />
         )
       } 
