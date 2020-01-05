@@ -3,10 +3,10 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import NavBar from '../NavBar';
 import Player from './Player.js';
+import FileHoverBox from './FileHoverBox.js';
 import { Receiver } from 'react-file-uploader';
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from "react-router-dom";
 //https://www.npmjs.com/package/react-audio-visualizer
-
 
 class InputView extends React.Component {
     constructor(props) {
@@ -15,6 +15,7 @@ class InputView extends React.Component {
             redirect: '',
             isReceiverOpen: false,
             file: null,
+            fileHover: false,
         }
         this.resolveClick = this.resolveClick.bind(this);
     }
@@ -37,8 +38,13 @@ class InputView extends React.Component {
                 
             }
         } else if (type === "BlobFile") {
-            fileReader.readAsArrayBuffer(v)
+            fileReader.readAsArrayBuffer(v).then((result) => {
+                console.log(result);
+            });
             console.log(fileReader)
+            if (true) { //TODO: check if something actually went through
+
+            }
         }
     }
 
@@ -60,9 +66,12 @@ class InputView extends React.Component {
                         isOpen={true}
                         onDragEnter={(e)=>{this.setState({ isReceiverOpen: true });}}
                         onDragOver={(e)=>{
-                            // your codes here
+                            if (!this.state.fileHover) {
+                                this.setState({fileHover: true});
+                            }
                         }}
                         onDragLeave={(e)=>{
+                            this.setState({fileHover: false});
                             this.setState({ isReceiverOpen: false });
                         }}
                         onFileDrop={(e, uploads)=>{
@@ -82,7 +91,7 @@ class InputView extends React.Component {
                             visual layer of the receiver (drag & drop panel)
                         </div>
                     </Receiver>
-                    <Typography id='inputDrop' variant='h1'>DROP</Typography>
+                    <FileHoverBox fileHover={this.state.fileHover}/>
                     <Button variant='contained' color='primary' onClick={()=>this.resolveClick("ShowWave")}>GENERATE</Button>
                     
                 </div>
